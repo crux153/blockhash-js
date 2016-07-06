@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Blockhash Demo</title>
+</head>
+<body>
+	<h3>Choose image below and click button</h3>
+	<input type="file" id="file">
+	<button id="btn">Calculate Hash!</button>
+	<p id="hash"></p>
+
+	<script src="blockhash.js"></script>
+	<script>
+		var input = document.getElementById("file");
+		var btn = document.getElementById("btn");
+		var result = document.getElementById("hash");
+
+		btn.addEventListener("click", function() {
+			var file = input.files[0];
+			if (file) {
+				blockhash.hash(file).then(function(hash) {
+					result.textContent = "Calculated Hash: " + hash;
+				});
+			}
+		});		
+	</script>
+</body>
+</html>
